@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- <script href="index.js" ></script> -->
+</head>
+<body>
+    <div class="container">
+        <h1>Password Generator<hr/></h1>
+        <div class="main">
+            <input type="text" id="password" placeholder="Password">
+            <i class="fa-regular fa-copy" onclick="copyPassword()"></i>
+        </div>
+        <button onclick="createPassword()">Genetate Password</button>
+    </div>
+    <script>
+        
+const passwordBox= document.getElementById("password")
+const lengthA =12;
+const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+const lowerCase = "abcdefghijklmnopqrstuvwxyz"
+const number = "0123456789"
+const symbol = "@#$%&"
+const allChars = upperCase+lowerCase+number+symbol
+
+function createPassword(){
+    console.log("hi")
+    let password="";
+    password += upperCase[Math.floor(Math.random()*upperCase.length)];
+    password += lowerCase[Math.floor(Math.random()*lowerCase.length)];
+    password += number[Math.floor(Math.random()*number.length)];
+    password += symbol[Math.floor(Math.random()*symbol.length)];
+     
+    while(lengthA > password.length){
+        password += allChars[Math.floor(Math.random()* allChars.length)]
+    }
+    return passwordBox.value=password;
+}
+function copyPassword(){
+    passwordBox.select()
+    document.execCommand("copy")
+}
+    </script>
+</body>
+</html>
